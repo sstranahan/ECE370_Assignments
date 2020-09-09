@@ -83,6 +83,9 @@
 		<Unit filename="C:/Users/sstranahan/Desktop/ECE370_Assignments/Assignment_1/Assignment_1/main.cpp">
 			<Option target="Assignment_1"/>
 		</Unit>
+		<Unit filename="C:/Users/sstranahan/Desktop/ECE370_Assignments/Assignment_1/Assignment_1/people.h">
+			<Option target="Assignment_1"/>
+		</Unit>
 		<Unit filename="C:/Users/sstranahan/Desktop/ECE370_Assignments/Assignment_1/Assignment_1/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
