@@ -328,6 +328,7 @@ void searchRecord(person people[], int numRecs, person foundPeople[], int &numFo
         }
         if (searchedLN == response) {
             printPerson(people[i]);
+            cout << endl;
             foundPeople[numFound] = people[i];
             numFound++;
             nameFound = true;
