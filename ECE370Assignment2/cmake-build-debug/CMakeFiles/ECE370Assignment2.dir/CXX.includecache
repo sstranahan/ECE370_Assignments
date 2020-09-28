@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/stephenstranahan/CLionProjects/ECE370Assignment2/MyQueue.cpp
+MyQueue.h
+/Users/stephenstranahan/CLionProjects/ECE370Assignment2/MyQueue.h
+
+/Users/stephenstranahan/CLionProjects/ECE370Assignment2/MyQueue.h
+iostream
+-
+stdlib.h
+-
+
+/Users/stephenstranahan/CLionProjects/ECE370Assignment2/MyStack.cpp
+MyStack.h
+/Users/stephenstranahan/CLionProjects/ECE370Assignment2/MyStack.h
+
+/Users/stephenstranahan/CLionProjects/ECE370Assignment2/MyStack.h
+iostream
+-
+stdlib.h
+-
+
+/Users/stephenstranahan/CLionProjects/ECE370Assignment2/main.cpp
+iostream
+-
+MyStack.cpp
+/Users/stephenstranahan/CLionProjects/ECE370Assignment2/MyStack.cpp
+MyQueue.cpp
+/Users/stephenstranahan/CLionProjects/ECE370Assignment2/MyQueue.cpp
+
