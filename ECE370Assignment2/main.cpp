@@ -45,6 +45,7 @@
  * "a2.txt"
  *
  * *******************************************************************************************
+ * *******************************************************************************************
  *
  * Sample Test Data:
  * 8-3*2
@@ -67,28 +68,109 @@
 
 using namespace std;
 
-template <typename T>
-string INFIX_TO_POSTFIX(string infix, MyStack<T> stack, MyQueue<T> queue);
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////// Function Prototypes ///////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 template <typename T>
-string EVALUATE_POSTFIX(string infix, MyStack<T> stack, MyQueue<T> queue);
+string INFIX_TO_POSTFIX(string infix);
+
+template <typename T>
+float EVALUATE_POSTFIX(string postfix);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////// Main Program /////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int main()
 {
-    MyStack<float> stack;
-    MyQueue<float> queue;
+    ifstream inFile;
+    inFile.open("a2.txt");
+
+    string fileInput = "";
+    string postfixExp = "";
+    float result = 0.0;
+    float sum = 0.0;
+
+    while (!inFile.eof()) {         // Main loop - will read expressions (lines) from file and evaluate them until reaching EOF
+        getline(inFile, fileInput);
+        postfixExp = INFIX_TO_POSTFIX(fileInput);
+        result = EVALUATE_POSTFIX(postfixExp);
+        sum += result;
+
+    }
+
+    inFile.close();
 
     return 0;
 }
 
-template<typename T>
-string INFIX_TO_POSTFIX(string infix, MyStack<T> stack, MyQueue<T> queue)
-{
-    return ;
-}
+/////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////// Function Definitions ///////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// Function:
+//
+//
+// Parameters:
+//
+//
+// Return Value:
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 template<typename T>
-string EVALUATE_POSTFIX(string infix, MyStack<T> stack, MyQueue<T> queue)
+string INFIX_TO_POSTFIX(string infix)
 {
-    return ;
+    string postfixResult = "";
+
+    MyStack<char> stack;
+    MyQueue<char> queue;
+
+    for (int i = 0; i < infix.length(); i++) {
+        switch (infix[i]) {
+            case '(' :
+
+                break;
+            case ')' :
+
+                break;
+            default :
+                if (isnumber(infix[i])) {
+                    queue.enqueue(infix[i]);
+                    break;
+                }
+                else if (infix[i] == '-' || infix[i] == '+' || infix[i] == '/' || infix[i] == '*' || infix[i] == '^') {
+
+                    break;
+                }
+                else {
+                    cout << "Error. Invalid character read from file.\nTerminating program.\n";
+                    exit(EXIT_FAILURE);
+                }
+        }
+    }
+    return "";
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// Function:
+//
+//
+// Parameters:
+//
+//
+// Return Value:
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+template<typename T>
+float EVALUATE_POSTFIX(string postfix)
+{
+    return 0.0;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// Thank You!! ///////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
