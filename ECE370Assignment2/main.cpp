@@ -76,7 +76,7 @@ template <typename T>
 string INFIX_TO_POSTFIX(string infix);
 
 template <typename T>
-float EVALUATE_POSTFIX(string postfix);
+float EVALUATE_POSTFIX(MyQueue<char> postfix);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -90,9 +90,9 @@ int main()
     inFile.open("a2.txt");
 
     string fileInput = "";
-    string postfixExp = "";
     float result = 0.0;
     float sum = 0.0;
+    MyQueue<char> postfixExp;
 
     while (!inFile.eof()) {         // Main loop - will read expressions (lines) from file and evaluate them until reaching EOF
         getline(inFile, fileInput);
@@ -121,10 +121,9 @@ int main()
 // Return Value:
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-template<typename T>
-string INFIX_TO_POSTFIX(string infix)
+MyQueue<char> INFIX_TO_POSTFIX(string infix)
 {
-    string postfixResult = "";
+    int precedenceNext, precedenceTop;
 
     MyStack<char> stack;
     MyQueue<char> queue;
@@ -132,10 +131,17 @@ string INFIX_TO_POSTFIX(string infix)
     for (int i = 0; i < infix.length(); i++) {
         switch (infix[i]) {
             case '(' :
-
+                stack.push(infix[i]);
                 break;
             case ')' :
-
+                while (stack.peek() != '(') {
+                    if (stack.isEmpty()){
+                        cout << "Error. Translation failed.\nTerminating program.\n";
+                        exit(EXIT_FAILURE);
+                    }
+                    queue.enqueue(stack.pop());
+                }
+                stack.pop();
                 break;
             default :
                 if (isnumber(infix[i])) {
@@ -143,8 +149,50 @@ string INFIX_TO_POSTFIX(string infix)
                     break;
                 }
                 else if (infix[i] == '-' || infix[i] == '+' || infix[i] == '/' || infix[i] == '*' || infix[i] == '^') {
-
-                    break;
+                    switch (infix[i]){
+                        case '+' :
+                            precedenceNext = 1;
+                            break;
+                        case '-' :
+                            precedenceNext = 1;
+                            break;
+                        case '*' :
+                            precedenceNext = 2;
+                            break;
+                        case '/' :
+                            precedenceNext = 2;
+                            break;
+                        case '^' :
+                            precedenceNext = 3;
+                            break;
+                        default:
+                            cout << "Error. Translation failed.\nTerminating program.\n";
+                            exit(EXIT_FAILURE);
+                    }
+                    switch (stack.peek()){
+                        case '+' :
+                            precedenceTop = 1;
+                            break;
+                        case '-' :
+                            precedenceTop = 1;
+                            break;
+                        case '*' :
+                            precedenceTop = 2;
+                            break;
+                        case '/' :
+                            precedenceTop = 2;
+                            break;
+                        case '^' :
+                            break;
+                            precedenceTop = 3;
+                        default:
+                            cout << "Error. Translation failed.\nTerminating program.\n";
+                            exit(EXIT_FAILURE);
+                    }
+                    while (precedenceTop >= precedenceNext && !stack.isEmpty()) {
+                        queue.enqueue(stack.pop());
+                    }
+                    stack.push(infix[i]);
                 }
                 else {
                     cout << "Error. Invalid character read from file.\nTerminating program.\n";
@@ -152,7 +200,11 @@ string INFIX_TO_POSTFIX(string infix)
                 }
         }
     }
-    return "";
+
+    while (!stack.isEmpty()) {
+        queue.enqueue(stack.pop());
+    }
+    return queue;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -165,9 +217,14 @@ string INFIX_TO_POSTFIX(string infix)
 // Return Value:
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-template<typename T>
+
 float EVALUATE_POSTFIX(string postfix)
 {
+    float result;
+    MyStack<float> stack;
+
+
+
     return 0.0;
 }
 
