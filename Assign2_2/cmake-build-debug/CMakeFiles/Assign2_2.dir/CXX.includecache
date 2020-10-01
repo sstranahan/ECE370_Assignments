@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/sstranahan/Desktop/Personal Projects/ECE370_Assignments/Assign2_2/MyQueue.cpp
+MyQueue.h
+C:/Users/sstranahan/Desktop/Personal Projects/ECE370_Assignments/Assign2_2/MyQueue.h
+
+C:/Users/sstranahan/Desktop/Personal Projects/ECE370_Assignments/Assign2_2/MyQueue.h
+iostream
+-
+stdlib.h
+-
+
+C:/Users/sstranahan/Desktop/Personal Projects/ECE370_Assignments/Assign2_2/MyStack.cpp
+MyStack.h
+C:/Users/sstranahan/Desktop/Personal Projects/ECE370_Assignments/Assign2_2/MyStack.h
+
+C:/Users/sstranahan/Desktop/Personal Projects/ECE370_Assignments/Assign2_2/MyStack.h
+iostream
+-
+stdlib.h
+-
+
+C:/Users/sstranahan/Desktop/Personal Projects/ECE370_Assignments/Assign2_2/main.cpp
+iostream
+-
+string
+-
+fstream
+-
+cctype
+-
+MyStack.cpp
+C:/Users/sstranahan/Desktop/Personal Projects/ECE370_Assignments/Assign2_2/MyStack.cpp
+MyQueue.cpp
+C:/Users/sstranahan/Desktop/Personal Projects/ECE370_Assignments/Assign2_2/MyQueue.cpp
+
